@@ -1,0 +1,17 @@
+Build: g++ -std=c++17 -pthread -Wall main.cpp messages_queue.hpp -o main
+
+main.cpp - simple reader/writer emulator. Used for testing
+It creastes read, write threads. 
+Write thread produces messages every 4 or 5 or 6 seconds
+Read thread reads messages every 5 seconds
+Usage: First arg - Queue size. Second arg - num of write threads. Third arg - num of read threads
+
+Run example:./main 2 2 4 - to see waits on pop (queue size = 2, num writers = 2, num readers = 4)
+            ./main 2 4 2 - to see push return (queue size = 2, num writers = 4, num readers = 2)
+
+Log meaning:
+Queue pop. - wait pop started
+Queue is empty - read thread on wait
+Queue pop end - pop finished
+Queue push - Push started
+Queue is full - No elements added into queue
